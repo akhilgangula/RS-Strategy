@@ -1,11 +1,11 @@
-package com.charlotte.IntelligentSystems;
+package com.uncc.TreeUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class And extends ExpNode implements Traverse {
+public class And extends ExpNode implements Traverse {
 
-    And(char c) {
+    public And(char c) {
         super(c);
     }
 

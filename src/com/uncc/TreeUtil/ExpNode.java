@@ -1,7 +1,7 @@
-package com.charlotte.IntelligentSystems;
+package com.uncc.TreeUtil;
 
-abstract class ExpNode implements Traverse {
-    char name;
+public abstract class ExpNode implements Traverse {
+    public char name;
 
     public ExpNode(char name, ExpNode left_child, ExpNode right_child) {
         this.name = name;
@@ -9,7 +9,7 @@ abstract class ExpNode implements Traverse {
         this.right_child = right_child;
     }
 
-    ExpNode left_child, right_child;
+    public ExpNode left_child, right_child;
 
     ExpNode() {
     }

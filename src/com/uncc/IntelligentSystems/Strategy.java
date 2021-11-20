@@ -1,13 +1,11 @@
-package com.charlotte.IntelligentSystems;
+package com.uncc.IntelligentSystems;
 
+import com.uncc.TreeUtil.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
 public class Strategy {
-
-
-
     static ExpNode getNode(char c) {
         return switch (c) {
             case Util.OR -> new Or(c);
@@ -102,8 +100,8 @@ public class Strategy {
 
     }
 
-    public Strategy transform(boolean isPolishNotation) {
-        exp = isPolishNotation ? ExpressionCovertor.preToPost(exp) : ExpressionCovertor.infixToPostfix(exp);
+    public Strategy normalize(boolean isPolishNotation) {
+        exp = isPolishNotation ? ExpressionConvertor.prefixToPostfix(exp) : ExpressionConvertor.infixToPostfix(exp);
         return this;
     }
 
@@ -113,7 +111,10 @@ public class Strategy {
                 .replaceAll("\\[", Character.toString(Util.OPEN_BRACKET))
                 .replaceAll("\\{", Character.toString(Util.OPEN_BRACKET))
                 .replaceAll("]", Character.toString(Util.CLOSE_BRACKET))
-                .replaceAll("}", Character.toString(Util.CLOSE_BRACKET));
+                .replaceAll("}", Character.toString(Util.CLOSE_BRACKET))
+                .replaceAll("\\^", Character.toString(Util.AND))
+                .replaceAll("~", Character.toString(Util.NEGATION))
+                .replaceAll("v", Character.toString(Util.OR));
         return this;
     }
 
@@ -124,11 +125,10 @@ public class Strategy {
     String exp;
 
     public static void main(String[] args) {
-        boolean result = new Strategy("->->ab->!b!a")
+        boolean result = new Strategy("~(a -> c) -> [~(c v d)-> (a ^ ~c)]")
                 .cleanExp()
-                .transform(true)
+                .normalize(false)
                 .runStrategy();
-        System.out.println(result);
-//        System.out.println(runStrategy("((a~b)~(!b~!a))", false));
+        System.out.println("Is tautology: " + result);
     }
 }

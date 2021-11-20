@@ -1,4 +1,4 @@
-package com.charlotte.IntelligentSystems;
+package com.uncc.IntelligentSystems;
 
 public class Util {
 

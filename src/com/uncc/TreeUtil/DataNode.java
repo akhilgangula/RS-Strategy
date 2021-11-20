@@ -1,10 +1,10 @@
-package com.charlotte.IntelligentSystems;
+package com.uncc.TreeUtil;
 
 import java.util.List;
 
-class DataNode extends ExpNode implements Traverse {
+public class DataNode extends ExpNode implements Traverse {
 
-    DataNode(char c) {
+    public DataNode(char c) {
         super(c);
     }
 
