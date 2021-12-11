@@ -14,22 +14,8 @@ Run via Jar. Download the Jar file from <project_dir>/out/artifacts/RS_Strategy_
 ```shell
 java -jar RS_Strategy.jar
 ```
-
+Follow the instructions on the screen.
 This way we can enter the expression on the cmd line, instead of opening project.
-
-or
-
-Use the Strategy class under com.uncc.IntelligentSystem spot the main class and add the express to be tested.
-
-```java
-boolean result=new Strategy("<Your expression goes here>")
-        .cleanExp() //  This will clean the expression like trimming spaces, replacing operantor
-        .normalize(false) // this will normalize the express to postfix
-        .runStrategy(); // runs the strategy
-```
-
-if the polish expression is added please notify the algorithm via **normalize** method, set the parameter to true, else
-to false
 
 or
 
@@ -43,14 +29,6 @@ List<String> positive=Arrays.asList("a->a","(!(a|b)->(!a&!b))","~(a -> c) -> [~(
 // add polish notation here
         List<String> positivePolish=Arrays.asList("->->ab->!b!a");
 ```
-
-Run via Jar. Download the Jar file from <project_dir>/out/artifacts/RS_Strategy_Jar and run below cmd.
-
-```shell
-java -jar RS_Strategy.jar
-```
-
-This way we can enter the expression on the cmd line, instead of opening project.
 
 
 ## Explanation

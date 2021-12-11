@@ -130,9 +130,9 @@ public class Strategy {
         }
         boolean isPolish = decision.equals("Y");
         boolean result = new Strategy(expression)
-                .cleanExp()
-                .normalize(isPolish)
-                .runStrategy();
+                .cleanExp() //  This will clean the expression like trimming spaces, replacing operator
+                .normalize(isPolish) // this will normalize the express to postfix
+                .runStrategy(); // runs the strategy
         System.out.println("Is tautology: " + result);
     }
 
