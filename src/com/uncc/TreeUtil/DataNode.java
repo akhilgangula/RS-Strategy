@@ -1,11 +1,13 @@
 package com.uncc.TreeUtil;
 
+import com.uncc.IntelligentSystems.Util;
+
 import java.util.List;
 
 public class DataNode extends ExpNode implements Traverse {
 
     public DataNode(char c) {
-        super(c);
+        super(c, Util.DATA);
     }
 
     @Override

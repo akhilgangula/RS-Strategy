@@ -1,16 +1,19 @@
 package com.uncc.TreeUtil;
 
+import com.uncc.IntelligentSystems.Util;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Or extends ExpNode implements Traverse {
 
     public Or(char c) {
-        super(c);
+        super(c, Util.OR);
     }
 
     @Override
     public List<List<ExpNode>> tLeft(List<ExpNode> left, List<ExpNode> right) {
+        Util.printLeaveFormula(left_child, right_child, op);
         List<List<ExpNode>> ret = new ArrayList<>();
         List<ExpNode> newLeft1 = new ArrayList<>(left);
         List<ExpNode> newLeft2 = new ArrayList<>(right);
@@ -25,6 +28,7 @@ public class Or extends ExpNode implements Traverse {
 
     @Override
     public List<List<ExpNode>> tRight(List<ExpNode> left, List<ExpNode> right) {
+        Util.printLeaveFormula(left_child, right_child, op);
         List<List<ExpNode>> ret = new ArrayList<>();
         ret.add(left);
         List<ExpNode> newRight = new ArrayList<>(right);

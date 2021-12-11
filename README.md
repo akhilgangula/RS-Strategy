@@ -30,8 +30,11 @@ List<String> positivePolish = Arrays.asList("->->ab->!b!a");
 ## Explanation
 
 The algorithm will only understand the postfix expression and then builds an expression tree, which is then evaluated via decomposition rules.
+So we need to normalize the expression (Infix or prefix expression) to postfix tree.
 
-While building the tree, nodes are classified by type, And, Or, Implies, Not, DataNode holding the logic to decompose the tree if encountered. 
+While building the tree, nodes are classified by type, And, Or, Implies, Not, DataNode holding the logic to decompose the tree if non-fundamental 
+formula is encountered algorithm fails by returns "Not a Not Tautology",
+otherwise null is returned at every iteration. If algo doesn't terminate the given expression is tautology.
 
 
 ## Valid input
@@ -42,3 +45,9 @@ NOT: !,~
 IMPLIES: ->, >  
 Precedence brackets: (,),{,},[,]  
 
+### Group members 
+
+Harshitha Govid  
+Akhil Reddy Gangula  
+Karthik Singh  
+Satyadev Tummala  

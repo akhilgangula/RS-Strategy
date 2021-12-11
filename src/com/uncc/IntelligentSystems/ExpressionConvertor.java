@@ -2,21 +2,16 @@ package com.uncc.IntelligentSystems;
 
 import java.util.Stack;
 
+
 public class ExpressionConvertor {
-    static int getPrecedence(char ch) {
-        switch (ch) {
-            case Util.OR:
-            case Util.AND:
-                return 1;
 
-            case Util.NEGATION:
-                return 3;
-            case Util.IMPLIES:
-                return 2;
-        }
-        return -1;
-    }
 
+
+    /**
+     * Convert infix to postfix expression
+     * @param exp
+     * @return
+     */
     static String infixToPostfix(String exp) {
         String result = "";
         Stack<Character> stack = new Stack<>();
@@ -34,8 +29,8 @@ public class ExpressionConvertor {
                 stack.pop();
             } else
             {
-                while (!stack.isEmpty() && getPrecedence(c)
-                        <= getPrecedence(stack.peek())) {
+                while (!stack.isEmpty() && Util.getPrecedence(c)
+                        <= Util.getPrecedence(stack.peek())) {
                     result += stack.pop();
                 }
                 stack.push(c);
@@ -51,6 +46,11 @@ public class ExpressionConvertor {
         return result;
     }
 
+    /**
+     * Converts prefix to postfix expression
+     * @param pre_exp
+     * @return
+     */
     static String prefixToPostfix(String pre_exp) {
         Stack<String> s = new Stack<>();
         int length = pre_exp.length();

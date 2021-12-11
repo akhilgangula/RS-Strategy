@@ -16,6 +16,11 @@ public class Strategy {
         };
     }
 
+    /**
+     * This methods takes in postfix expression and constructs a tree
+     * @param postfix postfix expression
+     * @return root node of the tree
+     */
     static ExpNode constructTree(char[] postfix) {
         Stack<ExpNode> st = new Stack<>();
         ExpNode t, t1 ,t2;
@@ -41,9 +46,16 @@ public class Strategy {
         return t;
     }
 
+    /**
+     *
+     * @param left list of children of left subtree
+     * @param right list of children of right subtree
+     * @return
+     */
     static String evaluate(List<ExpNode> left, List<ExpNode> right) {
         while(true) {
             boolean found = true;
+            // parsing left subtree
             for(ExpNode node: left) {
                 if(right.contains(node)) {
                     return null;
@@ -59,10 +71,12 @@ public class Strategy {
                             return v;
                         }
                     }
+                    // if leaves are fundamental
                     found = false;
                     break;
                 }
             }
+            //parsing right subtree
             for(ExpNode node: right) {
                 if(left.contains(node)) {
                     return null;
@@ -78,20 +92,28 @@ public class Strategy {
                             return v;
                         }
                     }
+                    // if leaves are fundamental
                     found = false;
                     break;
                 }
             }
+            // if none of the leaves are fundamental, stop the algorithm.
             if(found) {
+                // some value except null
                 return "Not Tautology";
             }
 
         }
     }
+
     static String evaluate(List<ExpNode> tree) {
         return evaluate(new ArrayList<>(), tree);
     }
 
+    /**
+     * Constructs the tree and runs the RS Strategy
+     * @return if expression is tautology
+     */
     public boolean runStrategy() {
         ExpNode root = constructTree(exp.toCharArray());
         List<ExpNode> expNodeList = new ArrayList<>();
@@ -100,11 +122,21 @@ public class Strategy {
 
     }
 
+    /**
+     * Normalize the expression to postfix notataion, if set to true, expression will be
+     * converted from prefix, else it will be converted from infix.
+     * @param isPolishNotation
+     * @return present object.
+     */
     public Strategy normalize(boolean isPolishNotation) {
         exp = isPolishNotation ? ExpressionConvertor.prefixToPostfix(exp) : ExpressionConvertor.infixToPostfix(exp);
         return this;
     }
 
+    /**
+     * clean the expression of any spaces, irregular notations.
+     * @return present object.
+     */
     public Strategy cleanExp() {
         exp = exp.replaceAll(" ", "")
                 .replaceAll("->", Character.toString(Util.IMPLIES))
