@@ -3,14 +3,13 @@ package com.uncc.TreeUtil;
 public abstract class ExpNode implements Traverse {
     public char name;
     public char op;
+    public ExpNode left_child, right_child;
 
     public ExpNode(char name, ExpNode left_child, ExpNode right_child) {
         this.name = name;
         this.left_child = left_child;
         this.right_child = right_child;
     }
-
-    public ExpNode left_child, right_child;
 
     ExpNode() {
     }

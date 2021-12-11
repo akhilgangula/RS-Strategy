@@ -6,9 +6,9 @@ import java.util.Stack;
 public class ExpressionConvertor {
 
 
-
     /**
      * Convert infix to postfix expression
+     *
      * @param exp
      * @return
      */
@@ -27,8 +27,7 @@ public class ExpressionConvertor {
                         stack.peek() != '(')
                     result += stack.pop();
                 stack.pop();
-            } else
-            {
+            } else {
                 while (!stack.isEmpty() && Util.getPrecedence(c)
                         <= Util.getPrecedence(stack.peek())) {
                     result += stack.pop();
@@ -48,6 +47,7 @@ public class ExpressionConvertor {
 
     /**
      * Converts prefix to postfix expression
+     *
      * @param pre_exp
      * @return
      */

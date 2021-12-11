@@ -2,37 +2,53 @@
 
 An implementation of the RS proof using decomposition Tree
 
+Please note: Please open the project with IDEA Intellij for best setup experience. View the project in the Github for better readMe experience.  
+
+https://github.com/akhilgangula/RS-Strategy
+
 ## How to run
 
 Use the Strategy class under com.uncc.IntelligentSystem spot the main class and add the express to be tested.
 
 ```java
-boolean result = new Strategy("<Your expression goes here>")
-                .cleanExp() //  This will clean the expression like trimming spaces, replacing operantor
-                .normalize(false) // this will normalize the express to postfix
-                .runStrategy(); // runs the strategy
+boolean result=new Strategy("<Your expression goes here>")
+        .cleanExp() //  This will clean the expression like trimming spaces, replacing operantor
+        .normalize(false) // this will normalize the express to postfix
+        .runStrategy(); // runs the strategy
 ```
 
-if the polish expression is added please notify the algorithm via **normalize** method, set the parameter to true, else to false
+if the polish expression is added please notify the algorithm via **normalize** method, set the parameter to true, else
+to false
 
 or
 
 Spot the test case file. Use the global variables to append expression
 
+
 ```java
-List<String> positive = Arrays.asList("a->a","(!(a|b)->(!a&!b))", "~(a -> c) -> [~(c v d)-> (a ^ ~c)]", "(!(a&b)->(!a|!b))", "((a|b)->!a)|(!a->!c)", "((a->b)->(!b->!a))");
-List<String> negative = Arrays.asList("a", "!a", "a->!a", "(((a->b)&!c)|(a->c))", "!(a->c)->(!(c|d)->(a&c))");
+List<String> positive=Arrays.asList("a->a","(!(a|b)->(!a&!b))","~(a -> c) -> [~(c v d)-> (a ^ ~c)]","(!(a&b)->(!a|!b))","((a|b)->!a)|(!a->!c)","((a->b)->(!b->!a))");
+        List<String> negative=Arrays.asList("a","!a","a->!a","(((a->b)&!c)|(a->c))","!(a->c)->(!(c|d)->(a&c))");
 
 // add polish notation here
-List<String> positivePolish = Arrays.asList("->->ab->!b!a");
+        List<String> positivePolish=Arrays.asList("->->ab->!b!a");
 ```
+or
+
+Run via Jar. Download the Jar file from <project_dir>/out/artifacts/RS_Strategy_Jar and run below cmd.
+
+```shell
+java -jar RS_Strategy.jar
+```
+
+This way we can enter the expression on the cmd line, instead of opening project.
+
 
 ## Explanation
 
 The algorithm will only understand the postfix expression and then builds an expression tree, which is then evaluated via decomposition rules.
 So we need to normalize the expression (Infix or prefix expression) to postfix tree.
 
-While resolving the tree, nodes are classified by type, And, Or, Implies, Not, DataNode holding the logic to decompose the tree. Each ExpNode will define a logic to break the node rule by tree decomposition rules. 
+While resolving the tree, nodes are classified by type, And, Or, Implies, Not, DataNode holding the logic to decompose the tree. Each ExpNode will define a logic to break the node rule by tree decomposition rules.
 
 Rules are as below:
 
@@ -52,9 +68,9 @@ AND: &, ^
 OR: |,v  
 NOT: !,~  
 IMPLIES: ->, >  
-Precedence brackets: (,),{,},[,]  
+Precedence brackets: (,),{,},[,]
 
-### Group members 
+### Group members
 
 Harshitha Govid  
 Akhil Reddy Gangula  

@@ -16,7 +16,7 @@ public class Not extends ExpNode {
         List<List<ExpNode>> ret = new ArrayList<>();
         ret.add(left);
         List<ExpNode> newRight = new ArrayList<>(right);
-        if(right_child != null) {
+        if (right_child != null) {
             newRight.add(right_child);
         }
         ret.add(newRight);
@@ -28,7 +28,7 @@ public class Not extends ExpNode {
         Util.printLeaveFormula(left_child, right_child, op);
         List<List<ExpNode>> ret = new ArrayList<>();
         List<ExpNode> newLeft = new ArrayList<>(left);
-        if(right_child != null) {
+        if (right_child != null) {
             newLeft.add(right_child);
         }
         ret.add(newLeft);

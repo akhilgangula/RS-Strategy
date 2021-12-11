@@ -18,6 +18,7 @@ public class Util {
      * & - AND
      * | - OR
      * > - placeholder for ->
+     *
      * @param c
      * @return ture or false
      */
@@ -28,6 +29,7 @@ public class Util {
 
     /**
      * Calculate precedence
+     *
      * @param ch
      * @return
      */
@@ -47,26 +49,27 @@ public class Util {
 
     /**
      * Prints sequences of formulas associated with leaves of the tree, only if they are fundamental
+     *
      * @param left
      * @param right
      * @param op
      */
     public static void printLeaveFormula(ExpNode left, ExpNode right, char op) {
-        if(left == null || right == null) {
+        if (left == null || right == null) {
             return;
         }
-        boolean negateLeft= false, negateRight = false;
-        if(left.name == '!') {
+        boolean negateLeft = false, negateRight = false;
+        if (left.name == '!') {
             negateLeft = true;
             left = left.right_child;
         }
-        if(right.name == '!') {
+        if (right.name == '!') {
             negateRight = true;
             right = right.right_child;
         }
-        if(isOperator(left.name) || isOperator((right.name))) {
+        if (isOperator(left.name) || isOperator((right.name))) {
             return;
         }
-        System.out.println((negateLeft ? "!"+left: left) +" "+ op +" "+(negateRight ? "!"+right: right));
+        System.out.println((negateLeft ? "!" + left : left) + " " + op + " " + (negateRight ? "!" + right : right));
     }
 }
