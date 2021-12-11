@@ -16,7 +16,8 @@ java -jar RS_Strategy.jar
 ```
 
 This way we can enter the expression on the cmd line, instead of opening project.
-Or
+
+or
 
 Use the Strategy class under com.uncc.IntelligentSystem spot the main class and add the express to be tested.
 
